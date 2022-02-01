@@ -39,10 +39,9 @@ import { readdirSync } from 'fs';
 import { join } from 'path';
 import * as worker from 'worker_threads';
 export var main = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var workers, preCompile, filenames, _i, filenames_1, filename, fullPath, w;
+    var preCompile, filenames, _i, filenames_1, filename, fullPath;
     return __generator(this, function (_a) {
         console.log('Entering main');
-        workers = [];
         preCompile = join(root, 'pre-compile');
         filenames = readdirSync(preCompile);
         for (_i = 0, filenames_1 = filenames; _i < filenames_1.length; _i++) {
@@ -52,8 +51,7 @@ export var main = function () { return __awaiter(void 0, void 0, void 0, functio
                 continue;
             }
             fullPath = join(preCompile, filename);
-            w = new worker.Worker(fullPath);
-            workers.push(w);
+            new worker.Worker(fullPath);
         }
         return [2 /*return*/];
     });

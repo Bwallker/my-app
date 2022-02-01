@@ -5,7 +5,6 @@ import * as worker from 'worker_threads';
 
 export const main = async () => {
   console.log('Entering main');
-  const workers: worker.Worker[] = [];
   const preCompile = join(root, 'pre-compile');
   const filenames = readdirSync(preCompile);
   for (const filename of filenames) {
@@ -14,8 +13,7 @@ export const main = async () => {
       continue;
     }
     const fullPath = join(preCompile, filename);
-    const w = new worker.Worker(fullPath);
-    workers.push(w);
+    new worker.Worker(fullPath);
   }
 };
 main()
