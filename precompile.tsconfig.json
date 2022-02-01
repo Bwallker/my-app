@@ -1,0 +1,10 @@
+{
+  "extends": "./compiler-options.json",
+  "files": [],
+  "include": ["src/pre-compile/**/*"],
+  "exclude": [],
+  "compilerOptions": {
+    "outDir": "pre-compile-target",
+    "rootDir": "./src"
+  }
+}
