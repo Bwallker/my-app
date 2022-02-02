@@ -9,7 +9,7 @@ export const goToParentDir = (path: string): string => {
   return '';
 };
 export const getDirName = (url: string | URL): string => {
-  const _filename = fileURLToPath(url);
+  const _filename = getFileName(url);
   return dirname(_filename);
 };
 export const getFileName = (url: string | URL): string => fileURLToPath(url);

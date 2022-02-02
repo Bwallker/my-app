@@ -1,7 +1,7 @@
 import root from '#src/root';
 import { readdirSync } from 'fs';
 import { join } from 'path';
-import * as worker from 'worker_threads';
+import { Worker } from 'worker_threads';
 
 export const main = async () => {
   console.log('Entering main');
@@ -13,8 +13,10 @@ export const main = async () => {
       continue;
     }
     const fullPath = join(preCompile, filename);
-    new worker.Worker(fullPath);
+    console.log(fullPath);
+    new Worker(fullPath);
   }
+
 };
 main()
   .then(() => {

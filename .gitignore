@@ -9,6 +9,8 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+./tsconfig.json
+./pre-compile-target
 
 # macOS
 .DS_Store

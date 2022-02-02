@@ -1,6 +1,8 @@
 {
+  "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "module": "ESNext",
+    "target": "ESNext",
     "baseUrl": ".",
     "paths": {
       "#root/*": ["./*"],
@@ -26,6 +28,5 @@
     "noPropertyAccessFromIndexSignature": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true
-  },
-  "extends": "expo/tsconfig.base"
+  }
 }

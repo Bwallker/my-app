@@ -4,21 +4,21 @@ import { goToParentDir } from '#src/util/fs';
 import { join } from 'path';
 import { execSync } from 'child_process';
 export const main = async () => {
-  const superRoot = goToParentDir(root);
-  console.log(superRoot);
-  const pathToConfig = join(superRoot, 'compiler-options.json');
+  const rootOfRoot = goToParentDir(root);
+  console.log(rootOfRoot);
+  const pathToConfig = join(rootOfRoot, 'compiler-options.json');
 
   const contents = readFileSync(pathToConfig, { encoding: 'utf-8' });
-  const jsonData = JSON.parse(contents);
-  jsonData['extends'] = 'expo/tsconfig.base';
+
+  const jsonData = { extends: 'expo/tsconfig.base', ...JSON.parse(contents) };
   const asString = JSON.stringify(jsonData, undefined, 2);
-  const pathToOtherConfig = join(superRoot, 'tsconfig.json');
+  const pathToOtherConfig = join(rootOfRoot, 'tsconfig.json');
 
   writeFileSync(pathToOtherConfig, asString, { encoding: 'utf-8' });
 
   execSync(
     `prettier --config ${join(
-      superRoot,
+      rootOfRoot,
       '.prettierrc.json'
     )} --write ${pathToOtherConfig}`
   );
@@ -26,7 +26,10 @@ export const main = async () => {
 main()
   .then(() => {
     console.log('Config generator script exited successfully');
+    process.exit(0);
   })
-  .catch(() => {
+  .catch((e) => {
     console.log('Config generator script failed');
+    console.log(e);
+    process.exit(1);
   });

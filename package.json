@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "prestart": "npx tsc --project precompile.tsconfig.json",
+    "emulator": "emulator.exe -avd Pixel_XL_API_30",
+    "prestart": "node clean.js && npx tsc --project precompile.tsconfig.json && node start.js",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -27,11 +28,17 @@
     "@types/react-native": "~0.64.12",
     "typescript": "^4.5.5"
   },
-  "private": true,
   "imports": {
-    "#root/*": "./*.js",
-    "#src/*": "./pre-compile-target/*.js",
-    "#pre-compile-target/*": "./pre-compile-target/*.js"
+    "#root/*": [
+      "./*.js"
+    ],
+    "#src/*": [
+      "./pre-compile-target/*.js"
+    ],
+    "#pre-compile-target/*": [
+      "./pre-compile-target/*.js"
+    ]
   },
-  "type": "module"
+  "type": "module",
+  "private": true
 }

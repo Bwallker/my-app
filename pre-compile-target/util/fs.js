@@ -1,15 +1,15 @@
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-export var goToParentDir = function (path) {
-    for (var i = path.length - 1; i >= 0; --i) {
+export const goToParentDir = (path) => {
+    for (let i = path.length - 1; i >= 0; --i) {
         if (path[i] === '/' || path[i] === '\\') {
             return path.substring(0, i);
         }
     }
     return '';
 };
-export var getDirName = function (url) {
-    var _filename = fileURLToPath(url);
+export const getDirName = (url) => {
+    const _filename = getFileName(url);
     return dirname(_filename);
 };
-export var getFileName = function (url) { return fileURLToPath(url); };
+export const getFileName = (url) => fileURLToPath(url);
