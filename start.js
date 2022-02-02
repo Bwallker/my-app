@@ -1,1 +1,1 @@
-import './pre-compile-target/pre-compile/start.js';
+import './pre-build-target/pre-build/start.js';

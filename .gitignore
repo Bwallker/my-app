@@ -10,7 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 tsconfig.json
-pre-compile-target
+pre-build-target
 
 # macOS
 .DS_Store

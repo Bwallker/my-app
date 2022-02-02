@@ -5,18 +5,17 @@ import { Worker } from 'worker_threads';
 
 export const main = async () => {
   console.log('Entering main');
-  const preCompile = join(root, 'pre-compile');
-  const filenames = readdirSync(preCompile);
+  const preBuild = join(root, 'pre-build');
+  const filenames = readdirSync(preBuild);
   for (const filename of filenames) {
     console.log(filename);
     if (filename === 'start.js' || !filename.endsWith('.js')) {
       continue;
     }
-    const fullPath = join(preCompile, filename);
+    const fullPath = join(preBuild, filename);
     console.log(fullPath);
     new Worker(fullPath);
   }
-
 };
 main()
   .then(() => {

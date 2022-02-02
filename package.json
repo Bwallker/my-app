@@ -10,7 +10,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "runx": "node ./pre-compile-target/src/pre-compile/generate-config.js"
+    "runx": "node ./pre-build-target/src/pre-build/generate-config.js"
   },
   "dependencies": {
     "expo": "~44.0.0",
@@ -33,10 +33,10 @@
       "./*.js"
     ],
     "#src/*": [
-      "./pre-compile-target/*.js"
+      "./pre-build-target/*.js"
     ],
-    "#pre-compile-target/*": [
-      "./pre-compile-target/*.js"
+    "#pre-build-target/*": [
+      "./pre-build-target/*.js"
     ]
   },
   "type": "module",

@@ -6,7 +6,7 @@
     "paths": {
       "#root/*": ["./*"],
       "#src/*": ["src/*"],
-      "#pre-compile-target/*": ["pre-compile-target/*"]
+      "#pre-build-target/*": ["pre-build-target/*"]
     },
     "strict": true,
     "noImplicitAny": true,
