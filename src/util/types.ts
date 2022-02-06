@@ -1,6 +1,10 @@
 export const isNumber = (x: unknown): x is number => typeof x === 'number';
 export const isString = (x: unknown): x is string => typeof x === 'string';
-export const isArray = <T>(x: unknown): x is Array<T> => Array.isArray(x);
+export const isArray = (x: unknown): x is any[] => Array.isArray(x);
+export const isArrayOfType = <T>(
+  x: unknown,
+  isT: (x: unknown) => x is T
+): x is T[] => isArray(x) && x.every((x: unknown) => isT(x));
 export const isObject = (x: unknown): x is object => typeof x === 'object';
 export const isBoolean = (x: unknown): x is boolean => typeof x === 'boolean';
 export const isUndefined = (x: unknown): x is undefined => x === undefined;
