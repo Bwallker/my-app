@@ -1,9 +1,10 @@
 import root from '#src/root';
+import Await from '#src/util/await';
 import { readdirSync } from 'fs';
 import { join } from 'path';
 import { Worker } from 'worker_threads';
 
-export const main = async () => {
+export const Start = async () => {
   console.log('Entering main');
   const preBuild = join(root, 'pre-build');
   const filenames = readdirSync(preBuild);
@@ -17,11 +18,4 @@ export const main = async () => {
     new Worker(fullPath);
   }
 };
-main()
-  .then(() => {
-    console.log('Start script exited successfully');
-  })
-  .catch((e) => {
-    console.log('Start script failed');
-    console.log(e);
-  });
+Await(Start);

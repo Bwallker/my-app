@@ -3,7 +3,8 @@ import root from '#src/root';
 import { goToParentDir } from '#src/util/fs';
 import { join } from 'path';
 import { execSync } from 'child_process';
-export const main = async () => {
+import Await from '#src/util/await';
+export const GenerateConfig = async () => {
   const rootOfRoot = goToParentDir(root);
   console.log(rootOfRoot);
   const pathToConfig = join(rootOfRoot, 'compiler-options.json');
@@ -23,13 +24,4 @@ export const main = async () => {
     )} --write ${pathToOtherConfig}`
   );
 };
-main()
-  .then(() => {
-    console.log('Config generator script exited successfully');
-    process.exit(0);
-  })
-  .catch((e) => {
-    console.log('Config generator script failed');
-    console.log(e);
-    process.exit(1);
-  });
+Await(GenerateConfig);
