@@ -5,6 +5,7 @@
   "scripts": {
     "emulator": "emulator.exe -avd Pixel_XL_API_30",
     "prestart": "node clean.js && npx tsc --project precompile.tsconfig.json && node start.js",
+    "test": "node clean.js && npx tsc --project precompile.tsconfig.json && node pre-build-target/pre-build/test.js",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",

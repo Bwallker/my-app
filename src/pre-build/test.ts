@@ -1,8 +1,8 @@
 import Await from '#src/util/await';
+import { isArrayOfType, isNumber } from '#src/util/types';
 
 const Test = async () => {
-  const myObject = {x: 1, y: 2, z: 3};
-  myObject = Object.freeze(myObject);
-  myObject.x = 5;
-}
+  const x = [1, 2, '3'];
+  console.log(isArrayOfType(x, isNumber));
+};
 Await(Test);
